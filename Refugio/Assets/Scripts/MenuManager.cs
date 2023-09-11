@@ -36,7 +36,7 @@ public class MenuManager : MonoBehaviour
 
     public void Website()
     {
-        Application.OpenURL("https://bento.me/capoficial");
+        Application.OpenURL("https://miguelviana.notion.site/Website-Grupo-33d76e09044e483ca5987605fa96dc88?pvs=4");
     }
 
     public void StartGame()
