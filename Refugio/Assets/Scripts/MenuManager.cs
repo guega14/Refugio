@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    public GameObject painelMenu, painelCreditos;
+    public GameObject painelMainMenu, painelCredits;
     public AudioSource Jukebox;
     public AudioClip musica, efeito;
     private void Awake()
     {
-        painelMenu.SetActive(true);
-        painelCreditos.SetActive(false);
+        painelMainMenu.SetActive(true);
+        painelCredits.SetActive(false);
     }
     // Start is called before the first frame update
     void Start()
@@ -24,14 +24,14 @@ public class MenuManager : MonoBehaviour
     public void GoToCredits()
     {
         Jukebox.PlayOneShot(efeito);
-        painelMenu.SetActive(false);
-        painelCreditos.SetActive(true);
+        painelMainMenu.SetActive(false);
+        painelCredits.SetActive(true);
     }
     public void GoToMenu()
     {
         Jukebox.PlayOneShot(efeito);
-        painelMenu.SetActive(true);
-        painelCreditos.SetActive(false);
+        painelMainMenu.SetActive(true);
+        painelCredits.SetActive(false);
     }
 
     public void Website()
