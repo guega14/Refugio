@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    public GameObject painelMainMenu, painelCredits;
+    public GameObject painelMainMenu, painelCredits, painelSettings;
     public AudioSource Jukebox;
     public AudioClip musica, efeito;
     private void Awake()
@@ -32,11 +32,18 @@ public class MenuManager : MonoBehaviour
         Jukebox.PlayOneShot(efeito);
         painelMainMenu.SetActive(true);
         painelCredits.SetActive(false);
+        painelSettings.SetActive(false);
+    }
+    public void GoToSettings()
+    {
+        Jukebox.PlayOneShot(efeito);
+        painelMainMenu.SetActive(true);
+        painelSettings.SetActive(true);
     }
 
     public void Website()
     {
-        Application.OpenURL("file:///C:/Users/migue/OneDrive/Documentos/GitHub/HTMLteamwebpage/teamwebpage/index.html");
+        Application.OpenURL("C:\\Users\\Aluno\\Documents\\MIGUEL VIANA - 3ºA\\github\\HTML-Site\\HTMLteamwebpage\\teamwebpage\\index.html");
     }
 
     public void StartGame()
