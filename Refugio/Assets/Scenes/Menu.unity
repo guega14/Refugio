@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &27382518
 RectTransform:
   m_ObjectHideFlags: 0
@@ -651,7 +651,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.606, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 2.5, y: 0}
   m_SizeDelta: {x: 5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2226,7 +2226,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.28, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2243,7 +2243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8018868, g: 0.7083795, b: 0.20728011, a: 1}
+  m_Color: {r: 0.7686275, g: 0.68235296, b: 0.20000002, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3373,8 +3373,8 @@ RectTransform:
   m_Father: {fileID: 1454495421}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.28, y: 0}
-  m_AnchorMax: {x: 0.28, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4109,7 +4109,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 37.65
+  m_fontSize: 18
   m_fontSizeBase: 27
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4315,7 +4315,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.26067936, y: 0.23179449}
   m_AnchorMax: {x: 0.734, y: 0.3764054}
-  m_AnchoredPosition: {x: 0.25, y: 0.36743164}
+  m_AnchoredPosition: {x: 0.25, y: 0.3674469}
   m_SizeDelta: {x: 0.8499999, y: 1.2651501}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1770838657
@@ -5073,9 +5073,6 @@ MonoBehaviour:
   painelMainMenu: {fileID: 1827100233}
   painelCredits: {fileID: 1566923477}
   painelSettings: {fileID: 27382517}
-  Jukebox: {fileID: 698626588}
-  musica: {fileID: 0}
-  efeito: {fileID: 0}
 --- !u!1 &2027026927
 GameObject:
   m_ObjectHideFlags: 0
@@ -5109,8 +5106,8 @@ RectTransform:
   m_Father: {fileID: 1937039793}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.606, y: 0}
-  m_AnchorMax: {x: 0.606, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5474,6 +5471,3 @@ MonoBehaviour:
   painelMainMenu: {fileID: 1827100233}
   painelCredits: {fileID: 1566923477}
   painelSettings: {fileID: 27382517}
-  Jukebox: {fileID: 0}
-  musica: {fileID: 0}
-  efeito: {fileID: 0}

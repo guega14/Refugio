@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     public GameObject painelMainMenu, painelCredits, painelSettings;
-    public AudioSource Jukebox;
-    public AudioClip musica, efeito;
+    //public AudioSource Jukebox;
+    //public AudioClip musica, efeito;
     private void Awake()
     {
         painelMainMenu.SetActive(true);
@@ -17,26 +17,26 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Jukebox.Play();
+        //Jukebox.Play();
     }
 
     // Update is called once per frame
     public void GoToCredits()
     {
-        Jukebox.PlayOneShot(efeito);
+        //Jukebox.PlayOneShot(efeito);
         painelMainMenu.SetActive(false);
         painelCredits.SetActive(true);
     }
     public void GoToMenu()
     {
-        Jukebox.PlayOneShot(efeito);
+        //Jukebox.PlayOneShot(efeito);
         painelMainMenu.SetActive(true);
         painelCredits.SetActive(false);
         painelSettings.SetActive(false);
     }
     public void GoToSettings()
     {
-        Jukebox.PlayOneShot(efeito);
+        //Jukebox.PlayOneShot(efeito);
         painelMainMenu.SetActive(true);
         painelSettings.SetActive(true);
     }
