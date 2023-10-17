@@ -3443,21 +3443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b032686f7fe9c15448de4669f2c17bdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nome: andre
-  x: 11
-  sesi: 1.1
-  y: 1
-  mybody: {fileID: 1152596812}
-  input: 0
-  velocidade: 4
-  jumpforce: 2
-  onground: 1
-  inputjump: 0
-  numeroDeMoedas: 0
-  textoDeMoedas: {fileID: 0}
-  mira: {fileID: 0}
-  tiroPlayer: {fileID: 0}
-  inputTiro: 0
-  podeAtirar: 1
-  animacaoAtual: 
-  MyAnim: {fileID: 0}
+  Speed: 1
+  JumpForce: 5
+  isJumping: 0
+  doubleJump: 0

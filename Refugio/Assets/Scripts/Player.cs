@@ -1,78 +1,66 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class Player : MonoBehaviour
 {
-    public static Player instance;
-    // Start is called before the first frame update
-    public string nome = "andre";
-    public int x = 11;
-    public float sesi = 1.1f;
-    public bool y = true;
-    public Rigidbody2D mybody;
-    public float input = 0f;
-    public float velocidade = 0f;
-    public float jumpforce = 0f;
-    public bool onground = true;
-    public float inputjump = 0f;
-    public int numeroDeMoedas;
-    public TMP_Text textoDeMoedas;
-    public GameObject mira;
-    public GameObject tiroPlayer;
-    public float inputTiro;
-    public bool podeAtirar = true;
-    public string animacaoAtual;
-    public Animator MyAnim;
-
-    private void Awake()
-    {
-        instance = this;
-    }
+    public float Speed;
+    public float JumpForce;
+    public bool isJumping;
+    public bool doubleJump;
+    private Rigidbody2D RB;
 
     void Start()
     {
-        x = 50;
-        if (x == 50)
+        RB = GetComponent<Rigidbody2D>();
+    }
+    void Update()
+    {
+        Move();
+        Jump();
+    }
+
+    void Move()
+    {
+        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
+        transform.position += movement * Time.deltaTime * Speed;
+
+    }
+
+    void Jump()
+    {
+        if (Input.GetButtonDown("Jump"))
         {
-            nome = "luva de pedreiro";
-        }
-        else
-        {
-            nome = "cr7 junior";
+            if (!isJumping)
+            {
+                RB.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
+                doubleJump = true;
+            }
+            else
+            {
+                if (doubleJump)
+                {
+                    RB.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
+                    doubleJump = false;
+                }
+            }
+
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        input = Input.GetAxis("Horizontal");
-        inputjump = Input.GetAxisRaw("Jump");
-        inputTiro = Input.GetAxisRaw("Fire1");
-        mybody.velocity = new Vector2(input * velocidade, mybody.velocity.y);
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Joia"))
+        if (collision.gameObject.layer == 8)
         {
-            numeroDeMoedas++;
-            textoDeMoedas.text = "Joias: " + numeroDeMoedas;
-            Destroy(collision.gameObject);
+            isJumping = false;
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.layer == 8)
         {
-            onground = true;
-        }
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            onground = false;
+            isJumping = true;
         }
     }
 }
