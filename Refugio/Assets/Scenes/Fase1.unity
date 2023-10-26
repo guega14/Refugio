@@ -263,7 +263,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 150
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0.059990168, b: 1, a: 1}
   m_FlipX: 0
@@ -283,8 +283,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 404572452}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.3, y: -1.29, z: 0}
-  m_LocalScale: {x: 1.6574, y: 1.6574, z: 1}
+  m_LocalPosition: {x: -2.9652, y: -1.598, z: 0}
+  m_LocalScale: {x: 0.98781043, y: 1.0415102, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -325,7 +325,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.75522536, y: 0.9034228}
   m_AnchorMax: {x: 0.7896621, y: 0.9615773}
-  m_AnchoredPosition: {x: -0.1000061, y: 0.022491455}
+  m_AnchoredPosition: {x: -0.099975586, y: 0.022491455}
   m_SizeDelta: {x: -0.4500122, y: -0.04499817}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &533381647
@@ -426,7 +426,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 150
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -28284,6 +28284,7 @@ GameObject:
   - component: {fileID: 1006687264}
   - component: {fileID: 1006687263}
   - component: {fileID: 1006687262}
+  - component: {fileID: 1006687265}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -28357,6 +28358,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1006687265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006687261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 207921bf273fc13499efc21afed5a7b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 404572458}
 --- !u!1 &1209731342
 GameObject:
   m_ObjectHideFlags: 0
