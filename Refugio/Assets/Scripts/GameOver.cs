@@ -7,11 +7,13 @@ public class GameOver : MonoBehaviour
 {
     public void RestartButton()
     {
-        SceneManager.LoadScene("Game");
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void ExitButton()
+    public void MenuButton()
     {
-        SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Menu");
     }
 }

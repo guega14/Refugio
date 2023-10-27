@@ -5,6 +5,15 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Rigidbody2D RB;
+    public bool isAlive = true;
+    public GameObject GameOverPanel;
+
+    //Pulo
+    public GameObject checkGround;
+    public float checkRadius;
+    public LayerMask whatIsGround;
+    public bool onGround;
+
 
     private void Start()
     {
@@ -14,28 +23,50 @@ public class Player : MonoBehaviour
     private void Update()
     {
         float dirX = Input.GetAxisRaw("Horizontal");
+        float jump = Input.GetAxis("Jump");
+
         RB.velocity= new Vector2(dirX * 7f, RB.velocity.y);
 
-        if (Input.GetButtonDown("Jump"))
+        onGround = Physics2D.OverlapCircle(checkGround.transform.position, checkRadius, whatIsGround);
+
+        if (jump != 0 && onGround ==true)
         {
             RB.velocity = new Vector2(RB.velocity.x, 7f);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnDrawGizmos()
     {
-        if (other.CompareTag("Enemy"))
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawWireSphere(checkGround.transform.position, checkRadius);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            // Call a method to handle player death
-            Die();
+            isAlive = false;
+            Time.timeScale = 0;
+            GameOverPanel.SetActive(true);
         }
     }
 
-    private void Die()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        // You can implement your own logic for player death here
-        // For example, you might want to play an animation or respawn the player
-        Debug.Log("Player has died");
-        // Add your own code for handling player death here
+
+        if (collision.gameObject.CompareTag("Aviso"))
+        {
+            collision.gameObject.GetComponent<Aviso>().avisoText.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+
+        if (collision.gameObject.CompareTag("Aviso"))
+        {
+            collision.gameObject.GetComponent<Aviso>().avisoText.SetActive(false);
+        }
     }
 }
