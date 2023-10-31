@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     public float checkRadius;
     public LayerMask whatIsGround;
     public bool onGround;
+    public float forcaPulo;
+    public float veloPlayer;
 
 
     private void Start()
@@ -25,13 +27,13 @@ public class Player : MonoBehaviour
         float dirX = Input.GetAxisRaw("Horizontal");
         float jump = Input.GetAxis("Jump");
 
-        RB.velocity= new Vector2(dirX * 7f, RB.velocity.y);
+        RB.velocity= new Vector2(dirX * veloPlayer, RB.velocity.y);
 
         onGround = Physics2D.OverlapCircle(checkGround.transform.position, checkRadius, whatIsGround);
 
         if (jump != 0 && onGround ==true)
         {
-            RB.velocity = new Vector2(RB.velocity.x, 7f);
+            RB.velocity = new Vector2(RB.velocity.x, forcaPulo);
         }
     }
 
