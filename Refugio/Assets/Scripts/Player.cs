@@ -42,10 +42,20 @@ public class Player : MonoBehaviour
         RB.velocity= new Vector2(dirX * veloPlayer, RB.velocity.y);
 
         onGround = Physics2D.OverlapCircle(checkGround.transform.position, checkRadius, whatIsGround);
-
+        Animations();
         if (jump != 0 && onGround ==true)
         {
             RB.velocity = new Vector2(RB.velocity.x, forcaPulo);
+        }
+    }
+    void Animations()
+    {
+        if(RB.velocity.x < 0) {
+            transform.localScale = new Vector3(-1, 1, 1);
+            }
+        if (RB.velocity.x > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
         }
     }
 
