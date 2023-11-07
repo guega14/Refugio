@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Hell
   - Aviso
+  - Heven
   layers:
   - Default
   - TransparentFX
