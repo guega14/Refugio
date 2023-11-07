@@ -6,10 +6,13 @@ public class Enemy : MonoBehaviour
 {
     public Transform Player;
     public float speed;
+    public float jumpForce;
     public float stoppingDistance;
+    public float detectionRange;
     public LayerMask groundMask;
 
     private Rigidbody2D rb;
+    private bool playerInRange = false;
 
     void Start()
     {
@@ -18,16 +21,38 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (Mathf.Abs(transform.position.x - Player.position.x) <= stoppingDistance)
+        if (Player != null)
         {
-            // Set Y velocity to 0 to prevent movement in Y axis
-            rb.velocity = new Vector2(rb.velocity.x, 0);
+            float distanceToPlayer = Vector2.Distance(transform.position, Player.position);
+
+            if (!playerInRange && distanceToPlayer < detectionRange)
+            {
+                playerInRange = true;
+            }
+
+            if (playerInRange && distanceToPlayer > stoppingDistance)
+            {
+                // Move towards the player
+                Vector2 direction = (Player.position - transform.position).normalized;
+                rb.velocity = new Vector2(direction.x * speed, rb.velocity.y);
+
+                // Check if the enemy is on the ground before jumping
+                if (IsGrounded())
+                {
+                    rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                }
+            }
+            else
+            {
+                // Stop moving when the player is not close enough or is within stopping distance
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            }
         }
-        else
-        {
-            // Set the X velocity based on the direction of the player
-            float x = (Player.position.x > transform.position.x) ? speed : -speed;
-            rb.velocity = new Vector2(x, rb.velocity.y);
-        }
+    }
+
+    bool IsGrounded()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.1f, groundMask);
+        return hit.collider != null;
     }
 }
