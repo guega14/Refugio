@@ -421,7 +421,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   onGround: 0
-  forcaPulo: 12
+  forcaPulo: 18
   veloPlayer: 6
   health: 3
   heart1: {fileID: 1390613399}
@@ -981,7 +981,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 404572458}
   speed: 1
+  jumpForce: 0
   stoppingDistance: 0
+  detectionRange: 0
   groundMask:
     serializedVersion: 2
     m_Bits: 0
@@ -1823,7 +1825,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1006687261}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.35937893, y: -0.009429932, z: -10}
+  m_LocalPosition: {x: -1.0212, y: -0.009550095, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

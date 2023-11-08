@@ -37,10 +37,10 @@ public class Enemy : MonoBehaviour
                 rb.velocity = new Vector2(direction.x * speed, rb.velocity.y);
 
                 // Check if the enemy is on the ground before jumping
-                if (IsGrounded())
+                /*if (IsGrounded())
                 {
                     rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-                }
+                }*/
             }
             else
             {

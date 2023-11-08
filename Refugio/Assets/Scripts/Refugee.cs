@@ -26,6 +26,7 @@ public class Refugee : MonoBehaviour
     private void Start()
     {
         RB = GetComponent<Rigidbody2D>();
+        playerCollider = GetComponent<BoxCollider2D>();
 
     }
 
@@ -33,7 +34,7 @@ public class Refugee : MonoBehaviour
     {
         if (preso == 1)
         {
-            playerCollider = GetComponent<BoxCollider2D>();
+
             boxCollider = GameObject.Find("Player").GetComponent<BoxCollider2D>();
             Physics2D.IgnoreCollision(playerCollider, boxCollider, true);
             transform.position = Vector2.MoveTowards(transform.position, refugeePos.transform.position, veloPlayer);

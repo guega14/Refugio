@@ -696,7 +696,7 @@ Transform:
   m_GameObject: {fileID: 404572452}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.67, y: -2.05, z: 0}
-  m_LocalScale: {x: 0.8792815, y: 0.91483086, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 533194740}
@@ -2216,10 +2216,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'TECLA ANDAR: SETAS
+  m_text: 'ANDAR: <- ->
 
-
-'
+    PULAR: -'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
