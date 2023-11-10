@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Diagnostics.Tracing;
 
 public class Player : MonoBehaviour
 {
+    public static Player instance;
+
     private Rigidbody2D RB;
     public bool isAlive = true;
     public GameObject GameOverPanel;
+    public GameObject NextPanel;
 
     //Pulo
     public GameObject checkGround;
@@ -24,7 +28,27 @@ public class Player : MonoBehaviour
     public Image heart3;
     public Sprite fullHeart;
     public Sprite emptyHeart;
+    public Sprite dialloFinal;
+    public Sprite dialloVazio;
+    public Sprite estrelaVazia;
+    public Sprite estrelaCheia;
+    public Sprite estrelaMetade;
+    public Image p1;
+    public Image p2;
+    public Image p3;
+    public Image p4;
+    public Image p5;
+    public Image star1;
+    public Image star2;
+    public Image star3;
 
+
+    public int contagem;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -46,6 +70,55 @@ public class Player : MonoBehaviour
         if (jump != 0 && onGround ==true)
         {
             RB.velocity = new Vector2(RB.velocity.x, forcaPulo);
+        }
+        Debug.Log(contagem);
+        if (contagem == 0)
+        {
+            p1.sprite = dialloVazio;
+            p2.sprite = dialloVazio;
+            p3.sprite = dialloVazio;
+            p4.sprite = dialloVazio;
+            p5.sprite = dialloVazio;
+        }
+        if (contagem == 1)
+        {
+            p1.sprite = dialloFinal;
+            p2.sprite = dialloVazio;
+            p3.sprite = dialloVazio;
+            p4.sprite = dialloVazio;
+            p5.sprite = dialloVazio;
+        }
+        if (contagem == 2)
+        {
+            p1.sprite = dialloFinal;
+            p2.sprite = dialloFinal;
+            p3.sprite = dialloVazio;
+            p4.sprite = dialloVazio;
+            p5.sprite = dialloVazio;
+        }
+        if (contagem == 3)
+        {
+            p1.sprite = dialloFinal;
+            p2.sprite = dialloFinal;
+            p3.sprite = dialloFinal;
+            p4.sprite = dialloVazio;
+            p5.sprite = dialloVazio;
+        }
+        if (contagem == 4)
+        {
+            p1.sprite = dialloFinal;
+            p2.sprite = dialloFinal;
+            p3.sprite = dialloFinal;
+            p4.sprite = dialloFinal;
+            p5.sprite = dialloVazio;
+        }
+        if (contagem == 5)
+        {
+            p1.sprite = dialloFinal;
+            p2.sprite = dialloFinal;
+            p3.sprite = dialloFinal;
+            p4.sprite = dialloFinal;
+            p5.sprite = dialloFinal;
         }
     }
     void Animations()
@@ -106,7 +179,43 @@ public class Player : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Heven"))
         {
-            SceneManager.LoadScene("Fase2");
+            NextPanel.SetActive(true);
+            if (contagem == 5)
+            {
+                star1.sprite = estrelaCheia;
+                star2.sprite = estrelaCheia;
+                star3.sprite = estrelaCheia;
+            }
+            if (contagem == 4)
+            {
+                star1.sprite = estrelaCheia;
+                star2.sprite = estrelaCheia;
+                star3.sprite = estrelaVazia;
+            }
+            if (contagem == 3)
+            {
+                star1.sprite = estrelaCheia;
+                star2.sprite = estrelaMetade;
+                star3.sprite = estrelaVazia;
+            }
+            if (contagem == 2)
+            {
+                star1.sprite = estrelaCheia;
+                star2.sprite = estrelaVazia;
+                star3.sprite = estrelaVazia;
+            }
+            if (contagem == 1)
+            {
+                star1.sprite = estrelaMetade;
+                star2.sprite = estrelaVazia;
+                star3.sprite = estrelaVazia;
+            }
+            if (contagem == 0)
+            {
+                star1.sprite = estrelaVazia;
+                star2.sprite = estrelaVazia;
+                star3.sprite = estrelaVazia;
+            }
         }
     }
 

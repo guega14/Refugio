@@ -19,10 +19,9 @@ public class Refugee : MonoBehaviour
     public float forcaPulo;
     public float veloPlayer = 6;
     public int preso = 0;
-    public int contagem = 1;
     public float dist;
-    float dirX;
-          float jump;
+    public float jump;
+    public int contagem;
     private void Start()
     {
         RB = GetComponent<Rigidbody2D>();
@@ -30,22 +29,37 @@ public class Refugee : MonoBehaviour
 
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+
+
+        jump = Input.GetAxis("Jump");
         if (preso == 1)
         {
 
+            float dirXR = Input.GetAxisRaw("Horizontal");
+            float jumpR = Input.GetAxis("Jump");
+
+            RB.velocity = new Vector2(dirXR * veloPlayer, RB.velocity.y);
             boxCollider = GameObject.Find("Player").GetComponent<BoxCollider2D>();
             Physics2D.IgnoreCollision(playerCollider, boxCollider, true);
-            transform.position = Vector2.MoveTowards(transform.position, refugeePos.transform.position, veloPlayer);
+            onGround = Physics2D.OverlapCircle(checkGround.transform.position, checkRadius, whatIsGround);
+            if (jump != 0 && onGround == true)
+            {
+                RB.velocity = new Vector2(RB.velocity.x, forcaPulo);
+            }
+
+            transform.position = Vector2.MoveTowards(transform.position, new Vector3(refugeePos.transform.position.x,transform.position.y, 0), veloPlayer * Time.deltaTime);
+            
         }
         else 
         {
             //adicionar animação
+
             boxCollider = GameObject.Find("Player").GetComponent<BoxCollider2D>();
             Physics2D.IgnoreCollision(playerCollider, boxCollider, false);
-            float dirX = Input.GetAxisRaw("Horizontal");
-            float jump = Input.GetAxis("Jump");
+            float dirXR = Input.GetAxisRaw("Horizontal");
+            float jumpR = Input.GetAxis("Jump");
         }
     }
 
@@ -63,21 +77,19 @@ public class Refugee : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             preso = 1;
-            contagem = contagem++;
+            Player.instance.contagem++;
         }
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
             preso = 0;
-            contagem = contagem--;
+            Player.instance.contagem--;
         }
-
-    }
-    private void OnCollisionEnter2D(Collider2D collision)
-    {
-        //a
         if (collision.gameObject.CompareTag("Hell"))
         {
-            contagem = contagem--;
+            preso = 0;
+            Player.instance.contagem--;
         }
+
     }
 }
