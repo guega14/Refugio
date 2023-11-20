@@ -8,6 +8,7 @@ public class Refugee : MonoBehaviour
 {
     private Rigidbody2D RB;
     private BoxCollider2D playerCollider, boxCollider;
+    [SerializeField] private Animator animator;
 
     public GameObject refugeePos;
 
@@ -54,8 +55,24 @@ public class Refugee : MonoBehaviour
         }
         else 
         {
-            //adicionar animação
-
+           // if (onGround == true)
+           // {
+           //     this.animator.SetBool("pularR", false);
+           // }
+           // else
+           // {
+           //     this.animator.SetBool("pularR", true);
+           // }
+           // float velocidadeX = Mathf.Abs(this.RB.velocity.x);
+           // if (velocidadeX >= 1)
+           // {
+           //     this.animator.SetBool("correrR", true);
+           // }
+           // else
+           // {
+           //     this.animator.SetBool("correrR", false);
+           // }
+            
             boxCollider = GameObject.Find("Player").GetComponent<BoxCollider2D>();
             Physics2D.IgnoreCollision(playerCollider, boxCollider, false);
             float dirXR = Input.GetAxisRaw("Horizontal");

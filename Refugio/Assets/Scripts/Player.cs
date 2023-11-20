@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public bool isAlive = true;
     public GameObject GameOverPanel;
     public GameObject NextPanel;
+    [SerializeField] private Animator animator;
 
     //Pulo
     public GameObject checkGround;
@@ -123,12 +124,31 @@ public class Player : MonoBehaviour
     }
     void Animations()
     {
-        if(RB.velocity.x < 0) {
+        if (RB.velocity.x < 0) {
             transform.localScale = new Vector3(-1, 1, 1);
             }
         if (RB.velocity.x > 0)
         {
             transform.localScale = new Vector3(1, 1, 1);
+        }
+
+        float velocidadeX = Mathf.Abs(this.RB.velocity.x);
+        if (velocidadeX >= 1)
+        {
+            this.animator.SetBool("correr", true);
+        }
+        else
+        {
+            this.animator.SetBool("correr", false);
+        }
+
+        if (onGround == true)
+        {
+            this.animator.SetBool("pular", false);
+        }
+        else
+        {
+            this.animator.SetBool("pular", true);
         }
     }
 

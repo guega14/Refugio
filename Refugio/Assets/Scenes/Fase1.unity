@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f8cc1033ccb12748aa82f27aace0dc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   refugeePos: {fileID: 877674638}
   checkGround: {fileID: 716604258}
   checkRadius: 0.17
@@ -162,7 +163,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   onGround: 0
-  forcaPulo: 12
+  forcaPulo: 13
   veloPlayer: 5
   preso: 0
   dist: 0
@@ -315,6 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f8cc1033ccb12748aa82f27aace0dc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   refugeePos: {fileID: 575279143}
   checkGround: {fileID: 1361544479}
   checkRadius: 0.17
@@ -322,7 +324,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   onGround: 0
-  forcaPulo: 12
+  forcaPulo: 13
   veloPlayer: 5
   preso: 0
   dist: 0
@@ -821,6 +823,8 @@ GameObject:
   - component: {fileID: 404572456}
   - component: {fileID: 404572455}
   - component: {fileID: 404572454}
+  - component: {fileID: 404572459}
+  - component: {fileID: 404572460}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -843,6 +847,7 @@ MonoBehaviour:
   isAlive: 1
   GameOverPanel: {fileID: 1420002233}
   NextPanel: {fileID: 708193748}
+  animator: {fileID: 404572459}
   checkGround: {fileID: 533194739}
   checkRadius: 0.17
   whatIsGround:
@@ -884,7 +889,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.036871433, y: 0.013666958}
+  m_Offset: {x: -0.036871433, y: 0.04649192}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -895,7 +900,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.088491, y: 1.8214471}
+  m_Size: {x: 1.088491, y: 1.7557973}
   m_EdgeRadius: 0
 --- !u!50 &404572456
 Rigidbody2D:
@@ -978,7 +983,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 404572452}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4, y: -2.18, z: 0}
+  m_LocalPosition: {x: -0.4, y: -2.16, z: 0}
   m_LocalScale: {x: 0.8792815, y: 0.91483086, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -991,6 +996,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &404572459
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404572452}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 120479d1c1c7f9e4baa30a9d369d52de, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &404572460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404572452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba21e3c8171865447810f8867f5a15f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 404572459}
+  RB: {fileID: 404572456}
 --- !u!1 &431468818
 GameObject:
   m_ObjectHideFlags: 0
@@ -1311,6 +1350,7 @@ GameObject:
   - component: {fileID: 575119027}
   - component: {fileID: 575119026}
   - component: {fileID: 575119025}
+  - component: {fileID: 575119028}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -1399,6 +1439,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 404572458}
   speed: 3
+  animator: {fileID: 575119028}
   checkRadius: 5.61
   whatIsPlayer:
     serializedVersion: 2
@@ -1416,7 +1457,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.023919374, y: -0.038056105}
+  m_Offset: {x: 0.03265764, y: -0.03996858}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1427,7 +1468,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5694497, y: 0.8408579}
+  m_Size: {x: 0.6218785, y: 0.8676322}
   m_EdgeRadius: 0
 --- !u!50 &575119027
 Rigidbody2D:
@@ -1450,6 +1491,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &575119028
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575119022}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d1c2e7178da68f64a8ba3671aed4c5af, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &575279143
 GameObject:
   m_ObjectHideFlags: 0
@@ -2101,6 +2162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f8cc1033ccb12748aa82f27aace0dc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   refugeePos: {fileID: 364094273}
   checkGround: {fileID: 1471213908}
   checkRadius: 0.17
@@ -2108,7 +2170,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   onGround: 0
-  forcaPulo: 12
+  forcaPulo: 13
   veloPlayer: 5
   preso: 0
   dist: 0
@@ -2923,7 +2985,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1006687261}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.13383481, y: -0.009469986, z: -10}
+  m_LocalPosition: {x: 0.9819641, y: -0.009380102, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4747,7 +4809,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 490.19394, y: 370.34195}
+  m_AnchoredPosition: {x: 490.19397, y: 370.34195}
   m_SizeDelta: {x: 162.55, y: 185.19}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1450432076
@@ -5027,6 +5089,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 404572458}
   speed: 3
+  animator: {fileID: 0}
   checkRadius: 5.61
   whatIsPlayer:
     serializedVersion: 2
@@ -5179,6 +5242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 404572458}
   speed: 3
+  animator: {fileID: 0}
   checkRadius: 5.61
   whatIsPlayer:
     serializedVersion: 2
@@ -5422,6 +5486,7 @@ GameObject:
   - component: {fileID: 1826851855}
   - component: {fileID: 1826851854}
   - component: {fileID: 1826851858}
+  - component: {fileID: 1826851859}
   m_Layer: 8
   m_Name: Refugee
   m_TagString: Refugee
@@ -5556,6 +5621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f8cc1033ccb12748aa82f27aace0dc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   refugeePos: {fileID: 1666978267}
   checkGround: {fileID: 326924055}
   checkRadius: 0.17
@@ -5563,12 +5629,32 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   onGround: 0
-  forcaPulo: 12
+  forcaPulo: 13
   veloPlayer: 5
   preso: 0
   dist: 0
   jump: 0
   contagem: 1
+--- !u!95 &1826851859
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826851852}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: edb6c00731b8e8c4b8f579294f0546b9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1907956899
 GameObject:
   m_ObjectHideFlags: 0
@@ -5601,6 +5687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f8cc1033ccb12748aa82f27aace0dc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   refugeePos: {fileID: 549674798}
   checkGround: {fileID: 1307596516}
   checkRadius: 0.17
@@ -5608,7 +5695,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   onGround: 0
-  forcaPulo: 12
+  forcaPulo: 13
   veloPlayer: 5
   preso: 0
   dist: 0
@@ -15512,7 +15599,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046813820}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4, y: -2.18, z: -10}
+  m_LocalPosition: {x: -0.4, y: -2.16, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
