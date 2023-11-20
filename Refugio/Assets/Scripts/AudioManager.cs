@@ -53,4 +53,20 @@ public class AudioManager : MonoBehaviour
             sfxSource.clip = s.clip;
         }
     }
+
+    public void ToggleSound()
+    {
+        isSoundOn = !isSoundOn; // Inverte o estado do som
+
+        if (isSoundOn)
+        {
+            musicSource.volume = 1f; // Define o volume para máximo (som ligado)
+            sfxSource.volume = 1f; // Define o volume para máximo (som ligado)
+        }
+        else
+        {
+            musicSource.volume = 0f; // Define o volume para zero (som desligado)
+            sfxSource.volume = 0f; // Define o volume para zero (som desligado)
+        }
+    }
 }
