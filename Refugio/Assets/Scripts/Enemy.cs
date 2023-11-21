@@ -44,15 +44,14 @@ public class Enemy : MonoBehaviour
         {
             this.animator.SetBool("correrE", false);
         }
-        /*if (rb.velocity.x < 0)
-        
+       if(Player.position.x > transform.position.x)
         {
-            spriteRenderer.flipX = true;
+            transform.localScale = new Vector3(2, 2, 0);
         }
-        if (rb.velocity.x > 0)
+        else
         {
-            spriteRenderer.flipX = false;
-        }*/
+            transform.localScale = new Vector3(-2, 2, 0);
+        }
     }
     private void OnDrawGizmos()
     {
