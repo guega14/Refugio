@@ -54,7 +54,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void ToggleSound()
+    /*public void ToggleSound()
     {
         isSoundOn = !isSoundOn; // Inverte o estado do som
 
@@ -68,5 +68,5 @@ public class AudioManager : MonoBehaviour
             musicSource.volume = 0f; // Define o volume para zero (som desligado)
             sfxSource.volume = 0f; // Define o volume para zero (som desligado)
         }
-    }
+    }*/
 }
