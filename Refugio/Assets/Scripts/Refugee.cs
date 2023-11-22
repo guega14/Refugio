@@ -23,6 +23,8 @@ public class Refugee : MonoBehaviour
     public float dist;
     public float jump;
     public int contagem;
+
+
     private void Start()
     {
         RB = GetComponent<Rigidbody2D>();
@@ -32,58 +34,65 @@ public class Refugee : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-
-        jump = Input.GetAxis("Jump");
         if (preso == 1)
         {
-
+            onGround = Physics2D.OverlapCircle(checkGround.transform.position, checkRadius, whatIsGround);
             float dirXR = Input.GetAxisRaw("Horizontal");
             float jumpR = Input.GetAxis("Jump");
-
-            RB.velocity = new Vector2(dirXR * veloPlayer, RB.velocity.y);
             boxCollider = GameObject.Find("Player").GetComponent<BoxCollider2D>();
             Physics2D.IgnoreCollision(playerCollider, boxCollider, true);
-            onGround = Physics2D.OverlapCircle(checkGround.transform.position, checkRadius, whatIsGround);
-            if (jump != 0 && onGround == true)
+
+            if (onGround == true)
+            {
+                float velocidadeX = Mathf.Abs(this.RB.velocity.x);
+                if (velocidadeX >= 1)
+                {
+                    this.animator.SetBool("corree", true);
+                    this.animator.SetBool("pulaa", false);
+                }
+                else
+                {
+                    this.animator.SetBool("corree", false);
+                    this.animator.SetBool("pulaa", false);
+                }
+            }
+            else
+            {
+                this.animator.SetBool("pulaa", true);
+                this.animator.SetBool("corree", false);
+
+            }
+
+            RB.velocity = new Vector2(dirXR * veloPlayer, RB.velocity.y);
+            if (jumpR != 0 && onGround == true)
             {
                 RB.velocity = new Vector2(RB.velocity.x, forcaPulo);
             }
 
-            transform.position = Vector2.MoveTowards(transform.position, new Vector3(refugeePos.transform.position.x,transform.position.y, 0), veloPlayer * Time.deltaTime);
-            
+            transform.position = Vector2.MoveTowards(transform.position, new Vector3(refugeePos.transform.position.x, transform.position.y, 0), veloPlayer * Time.deltaTime);
+            if (RB.velocity.x < 0)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+            if (RB.velocity.x > 0)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
         }
-        else 
+        else
         {
-           // if (onGround == true)
-           // {
-           //     this.animator.SetBool("pularR", false);
-           // }
-           // else
-           // {
-           //     this.animator.SetBool("pularR", true);
-           // }
-           // float velocidadeX = Mathf.Abs(this.RB.velocity.x);
-           // if (velocidadeX >= 1)
-           // {
-           //     this.animator.SetBool("correrR", true);
-           // }
-           // else
-           // {
-           //     this.animator.SetBool("correrR", false);
-           // }
-            
+            this.animator.SetBool("pulaa", false);
+            this.animator.SetBool("corree", false);
             boxCollider = GameObject.Find("Player").GetComponent<BoxCollider2D>();
             Physics2D.IgnoreCollision(playerCollider, boxCollider, false);
-            float dirXR = Input.GetAxisRaw("Horizontal");
-            float jumpR = Input.GetAxis("Jump");
         }
+
     }
 
 
-    private void OnDrawGizmos()
+private void OnDrawGizmos()
     {
-        //a
+
         Gizmos.color = Color.red;
 
         Gizmos.DrawWireSphere(checkGround.transform.position, checkRadius);
