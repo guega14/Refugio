@@ -9,6 +9,7 @@ TagManager:
   - Aviso
   - Heven
   - Refugee
+  - Ground
   layers:
   - Default
   - TransparentFX

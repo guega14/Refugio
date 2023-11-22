@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Diagnostics.Tracing;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -43,6 +44,13 @@ public class Player : MonoBehaviour
     public Image star2;
     public Image star3;
 
+    //Audio
+    public AudioClip fallSound;
+    private AudioSource audioSource;
+
+    //CountryName
+    public GameObject countryName; // Referência ao GameObject do letreiro do país
+    public string nomeDoPais = "Sudão do Sul"; // Defina o nome do país aqui
 
     public int contagem;
 
@@ -57,6 +65,33 @@ public class Player : MonoBehaviour
         heart3.sprite = fullHeart;
         heart2.sprite = fullHeart;
         heart1.sprite = fullHeart;
+
+        audioSource = GetComponent<AudioSource>();
+
+        countryName.SetActive(false);
+        MostrarPaisPorTempo(2f);
+    }
+
+    void MostrarPaisPorTempo(float time)
+    {
+        // Ative o letreiro do país
+        countryName.SetActive(true);
+
+        // Defina o texto para exibir o nome do país
+        TextMeshProUGUI textoDoPais = countryName.GetComponent<TextMeshProUGUI>();
+        if (textoDoPais != null)
+        {
+            textoDoPais.text = nomeDoPais;
+        }
+
+        // Agende a desativação do letreiro após o tempo especificado
+        Invoke("DesativarCountryName", 2f);
+    }
+
+    void DesativarCountryName()
+    {
+        // Desative o letreiro do país após o tempo especificado
+        countryName.SetActive(false);
     }
 
     private void Update()
@@ -64,11 +99,11 @@ public class Player : MonoBehaviour
         float dirX = Input.GetAxisRaw("Horizontal");
         float jump = Input.GetAxis("Jump");
 
-        RB.velocity= new Vector2(dirX * veloPlayer, RB.velocity.y);
+        RB.velocity = new Vector2(dirX * veloPlayer, RB.velocity.y);
 
         onGround = Physics2D.OverlapCircle(checkGround.transform.position, checkRadius, whatIsGround);
         Animations();
-        if (jump != 0 && onGround ==true)
+        if (jump != 0 && onGround == true)
         {
             RB.velocity = new Vector2(RB.velocity.x, forcaPulo);
         }
@@ -122,11 +157,13 @@ public class Player : MonoBehaviour
             p5.sprite = dialloFinal;
         }
     }
+
     void Animations()
     {
-        if (RB.velocity.x < 0) {
+        if (RB.velocity.x < 0)
+        {
             transform.localScale = new Vector3(-1, 1, 1);
-            }
+        }
         if (RB.velocity.x > 0)
         {
             transform.localScale = new Vector3(1, 1, 1);
@@ -162,7 +199,7 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
-        {   
+        {
             health = health - 1;
 
             if (health == 2)
@@ -197,6 +234,7 @@ public class Player : MonoBehaviour
             Time.timeScale = 0;
             GameOverPanel.SetActive(true);
         }
+
         if (collision.gameObject.CompareTag("Heven"))
         {
             NextPanel.SetActive(true);
@@ -235,6 +273,15 @@ public class Player : MonoBehaviour
                 star1.sprite = estrelaVazia;
                 star2.sprite = estrelaVazia;
                 star3.sprite = estrelaVazia;
+            }
+        }
+
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            if (fallSound != null && audioSource != null)
+            {
+                // Reproduz o som de queda
+                audioSource.PlayOneShot(fallSound);
             }
         }
     }
