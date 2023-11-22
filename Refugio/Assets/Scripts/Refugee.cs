@@ -36,6 +36,7 @@ public class Refugee : MonoBehaviour
     {
         if (preso == 1)
         {
+            this.animator.SetBool("destra", true);
             onGround = Physics2D.OverlapCircle(checkGround.transform.position, checkRadius, whatIsGround);
             float dirXR = Input.GetAxisRaw("Horizontal");
             float jumpR = Input.GetAxis("Jump");
@@ -81,6 +82,7 @@ public class Refugee : MonoBehaviour
         }
         else
         {
+            this.animator.SetBool("destra", false);
             this.animator.SetBool("pulaa", false);
             this.animator.SetBool("corree", false);
             boxCollider = GameObject.Find("Player").GetComponent<BoxCollider2D>();
